@@ -1,0 +1,132 @@
+<html>
+    <meta charset="utf-8"/>
+    <style>
+      * {
+      margin:0;
+      padding:0;
+      font-family:Arial;
+      }
+      .calcu {
+      background-color:black;
+      position:absolute;
+      top:40%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      padding:15px;
+      border-radius:10px;
+      height:57%;
+      width:72%;
+      }
+      #num {
+      background-color:white;
+      color:black;
+      font-size:30px;
+      width:420px;
+      height:50px;
+      margin:2px;
+      border-radius:10px;
+      }
+      button {
+      width:100px;
+      height:100px;
+      border-radius:100px;
+      text-alight:center;
+      margin:2px;
+      background-color:rgb(31,31,31);
+      border:1px;
+      color:white;
+      font-size:25px;
+      cursor:pointer;
+      }
+      .behind {
+      background-color:black;
+      height:100%;
+      }
+      button:hover {
+      background-color:black;
+      }
+      .del {
+        color:FF3300;
+      }
+      .operação {
+        color:66FF66;
+      }
+      .calcular {
+        background-color:006600;
+      }
+      .calcular:hover {
+         background-color:003300;
+      }
+      .head {
+  background-color:black;
+  color:white;
+      }
+    </style>
+<body>
+    <div class="behind">
+    <h1></h1>
+    <div class="calcu">
+    <h1 id="num"></h1>
+    <table class="but">
+    <tr>
+    <td><button class="del" onclick="del()">C</button></td>
+    <td><button class="operação" onclick="insert('(')">(</button></td>
+    <td><button class="operação" onclick="insert(')')">)</button></td>
+    <td><button class="operação" onclick="insert('/')">÷</button></td>
+    </tr>
+    <tr> 
+    <td><button onclick="insert('7')">7</button></td>
+    <td><button onclick="insert('8')">8</button></td>
+    <td><button onclick="insert('9')">9</button></td>
+    <td><button class="operação" onclick="insert('*')">×</button></td>
+    </tr>
+    <tr>
+    <td><button onclick="insert('4')">4</button></td>
+    <td><button onclick="insert('5')">5</button></td>
+    <td><button onclick="insert('6')">6</button></td>
+    <td><button class="operação" onclick="insert('-')">-</button></td>
+    </tr>
+    <tr>
+    <td><button onclick="insert('1')">1</button></td>
+    <td><button onclick="insert('2')">2</button></td>
+    <td><button onclick="insert('3')">3</button></td>
+    <td><button class="operação" onclick="insert('+')">+</button></td>
+    </tr>
+    <tr>
+    <td><button class="operação" onclick="excl()">^</button></td>
+    <td><button onclick="insert('0')">0</button></td>
+    <td><button class="operação" onclick="insert('.')">,</button></td>
+    <td><button class="calcular" onclick="calc()">=</button></td>
+    </tr>
+    </table>
+    </div>
+    </div>
+    <script>
+        function insert(res)
+        {
+        var number = document.getElementById("num").innerHTML;
+        document.getElementById("num").innerHTML = number + res; 
+        }
+        function excl()
+        {
+        var ex = document.getElementById("num").innerHTML;
+        document.getElementById("num").innerHTML = ex.substring(0,ex.length-1);       
+        }
+        function del()
+        {
+        var delet = document.getElementById("num").innerHTML;
+        document.getElementById("num").innerHTML = ""; 
+        }
+        function calc()
+        {
+        var res = document.getElementById("num").innerHTML;
+        if (res){
+        document.getElementById("num").innerHTML = eval (res);
+        }
+        else{
+        document.getElementById("num") .innerHTML = "?";
+        }  
+        }
+    </script>
+</body>
+</html>
